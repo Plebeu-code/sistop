@@ -1,0 +1,376 @@
+@layer tailwind-base, primevue, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+/* CSS Custom Properties para integração PrimeVue + TailwindCSS */
+:root {
+  /* Tipografia */
+  --font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Espaçamento consistente */
+  --content-padding: 1.5rem;
+  --section-gap: 2rem;
+  
+  /* Bordas e raios */
+  --border-radius: 0.5rem;
+  --border-radius-sm: 0.25rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Transições */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base styling */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: #1f2937;
+  background-color: #ffffff;
+  transition: background-color var(--transition-normal);
+}
+
+/* Force Light Theme for PrimeVue Components */
+.p-component {
+  color: #1f2937 !important;
+}
+
+.p-inputtext {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #1f2937 !important;
+}
+
+.p-inputtext:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 1px #3b82f6 !important;
+}
+
+.p-password input {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #1f2937 !important;
+}
+
+.p-password .p-password-toggle {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #374151 !important;
+}
+
+.p-button {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #1f2937 !important;
+}
+
+.p-button:hover {
+  background-color: #f9fafb !important;
+  border-color: #9ca3af !important;
+}
+
+.p-button-primary {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+.p-button-primary:hover {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+.p-card {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border-color: #e5e7eb !important;
+}
+
+.p-dialog {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+.p-dialog .p-dialog-header {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border-bottom-color: #e5e7eb !important;
+}
+
+.p-dialog .p-dialog-content {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+.p-dialog .p-dialog-footer {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border-top-color: #e5e7eb !important;
+}
+
+.p-message {
+  background-color: #eff6ff !important;
+  border-color: #3b82f6 !important;
+  color: #1e40af !important;
+}
+
+.p-dropdown {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #1f2937 !important;
+}
+
+.p-dropdown-panel {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+.p-dropdown-item {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+.p-dropdown-item:hover {
+  background-color: #f3f4f6 !important;
+  color: #1f2937 !important;
+}
+
+/* Force all inputs to have white background */
+input, textarea, select {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border-color: #d1d5db !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Override any potential dark theme classes */
+html, body, #app {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+.dark, [data-theme="dark"] {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+/* Ensure all PrimeVue panels are white */
+.p-panel, .p-fieldset, .p-accordion, .p-tabview {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+.p-panel .p-panel-header,
+.p-fieldset .p-fieldset-legend,
+.p-accordion .p-accordion-header,
+.p-tabview .p-tabview-nav {
+  background-color: #f8fafc !important;
+  color: #1f2937 !important;
+  border-color: #e5e7eb !important;
+}
+
+.p-panel .p-panel-content,
+.p-fieldset .p-fieldset-content,
+.p-accordion .p-accordion-content,
+.p-tabview .p-tabview-panels {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+/* Focus styles para acessibilidade */
+*:focus-visible {
+  outline: 2px solid rgb(var(--primary-500));
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--surface-100));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--surface-300));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--surface-400));
+}
+
+/* Animações suaves */
+* {
+  transition: 
+    background-color var(--transition-normal),
+    border-color var(--transition-normal),
+    color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+/* Utilitários personalizados */
+.content-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+}
+
+.card {
+  background: rgb(var(--surface-card));
+  border: 1px solid rgb(var(--surface-border));
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.btn-primary {
+  background: rgb(var(--primary-500));
+  color: rgb(var(--primary-color-text));
+  border: 1px solid rgb(var(--primary-500));
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: rgb(var(--primary-600));
+  border-color: rgb(var(--primary-600));
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow);
+}
+
+/* Melhorias para componentes PrimeVue */
+
+/* Toast customization */
+.p-toast {
+  z-index: 9999;
+}
+
+.p-toast .p-toast-message {
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  backdrop-filter: blur(8px);
+}
+
+/* Button improvements */
+.p-button {
+  transition: all var(--transition-fast);
+}
+
+.p-button:hover {
+  transform: translateY(-1px);
+}
+
+.p-button:active {
+  transform: translateY(0);
+}
+
+/* Input improvements */
+.p-inputtext,
+.p-dropdown,
+.p-multiselect {
+  border-radius: var(--border-radius);
+  transition: all var(--transition-fast);
+}
+
+.p-inputtext:focus,
+.p-dropdown:focus,
+.p-multiselect:focus {
+  box-shadow: 0 0 0 2px rgb(var(--primary-200));
+}
+
+/* DataTable improvements */
+.p-datatable .p-datatable-tbody > tr {
+  transition: background-color var(--transition-fast);
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  background: rgb(var(--surface-hover));
+}
+
+/* Menu improvements */
+.p-menu .p-menuitem-link {
+  transition: all var(--transition-fast);
+  border-radius: var(--border-radius-sm);
+}
+
+.p-menu .p-menuitem-link:hover {
+  background: rgb(var(--surface-hover));
+  transform: translateX(4px);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --shadow: 0 2px 4px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 8px 0 rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 8px 16px 0 rgb(0 0 0 / 0.3);
+  }
+  
+  .p-button,
+  .p-inputtext,
+  .p-dropdown {
+    border-width: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .p-toast,
+  .p-dialog-mask,
+  .p-sidebar {
+    display: none !important;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+}

@@ -1,0 +1,1 @@
+export { vCan, RBACPlugin } from './vCan'
